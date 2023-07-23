@@ -2,10 +2,22 @@
 import React from "react";
 import { Button, Form, Radio, message } from "antd";
 import Link from "next/link";
+import axios from "axios";
+import {useDispatch} from 'react-redux';
+import { setLoading } from '@/redux/loadersSlice';
 
 function Register() {
-  const handleSubmit = (values: any) => {
-    console.log(values);
+  const dispatch = useDispatch();
+  const handleSubmit = async(values: any) => {
+    try {
+      dispatch(setLoading(true)); 
+      const response = await axios.post('/api/users/register',values);
+      message.success(response.data.message);
+    } catch (error:any) {
+      message.error(error.response.data.message || "Something went wrong!!")
+    }finally{
+      dispatch(setLoading(false)); 
+    }
   };
   return (
     <div className="flex justify-center h-screen items-center bg-primary">
