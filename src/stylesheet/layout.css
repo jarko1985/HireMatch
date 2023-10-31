@@ -55,7 +55,7 @@
   .menu-item {
     color: white;
     display: flex;
-    gap: 10px;
+    gap: 5px;
     align-items: center;
     cursor: pointer;
     padding: 7px 5px;

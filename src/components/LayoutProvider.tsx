@@ -122,6 +122,8 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
                             ? "flex-start"
                             : "center",
                         }}
+                        key={index}
+                        onClick={()=>router.push(item.path)}
                       >
                         <i className={item.icon}></i>
                         <span>{isSideBarExpanded && item.name}</span>
